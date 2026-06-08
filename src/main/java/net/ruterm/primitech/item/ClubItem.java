@@ -1,21 +1,13 @@
 package net.ruterm.primitech.item;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tiers;
 
-public class ClubItem extends Item {
+public class ClubItem extends SwordItem {
 
 
     public ClubItem() {
-        super(new Item.Properties().stacksTo(1));
-    }
-
-
-    @Override
-    public boolean canAttackBlock(BlockState state, Level level, BlockPos pos, Player player) {
-        return !player.isCreative();
+        super(Tiers.WOOD, (new Item.Properties()).attributes(SwordItem.createAttributes(Tiers.WOOD, 5.5F, -3.6F)));
     }
 }
