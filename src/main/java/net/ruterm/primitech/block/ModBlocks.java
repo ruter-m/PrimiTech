@@ -3,10 +3,13 @@ package net.ruterm.primitech.block;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ruterm.primitech.PrimiTech;
+import net.ruterm.primitech.block.custom.RyeCropBlock;
 import net.ruterm.primitech.item.ModItems;
 
 import java.util.function.Supplier;
@@ -14,6 +17,9 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(PrimiTech.MODID);
+
+    public static final DeferredBlock<Block> RYE_CROP = BLOCKS.register("rye_crop",
+            () -> new RyeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block, Supplier<? extends T> Block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, Block);

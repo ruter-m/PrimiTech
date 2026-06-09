@@ -1,4 +1,4 @@
-package net.ruterm.primitech.item;
+package net.ruterm.primitech.item.custom;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;

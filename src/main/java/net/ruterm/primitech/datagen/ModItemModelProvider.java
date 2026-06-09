@@ -13,7 +13,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        basicItem(ModItems.CLUB.get());
+        handheldItem(ModItems.CLUB.get());
+
+        basicItem(ModItems.RYE_SEEDS.get());
 
     }
 }
