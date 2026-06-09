@@ -16,6 +16,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.CLUB.get());
 
         basicItem(ModItems.RYE_SEEDS.get());
+        basicItem(ModItems.RYE.get());
 
     }
 }
