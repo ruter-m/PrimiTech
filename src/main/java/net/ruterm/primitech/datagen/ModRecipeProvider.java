@@ -1,5 +1,11 @@
 package net.ruterm.primitech.datagen;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.ruterm.primitech.PrimiTech;
 import net.ruterm.primitech.block.ModBlocks;
 import net.ruterm.primitech.item.ModItems;
@@ -20,6 +26,29 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CLUB.get())
+                .pattern("  W")
+                .pattern(" W ")
+                .pattern("W  ")
+                .define('W', ItemTags.LOGS)
+                .unlockedBy("has_log", has(ItemTags.LOGS))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CLUB.get())
+                .pattern("W  ")
+                .pattern(" W ")
+                .pattern("  W")
+                .define('W', ItemTags.LOGS)
+                .unlockedBy("has_log", has(ItemTags.LOGS))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(PrimiTech.MODID, "club_flipped"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.RYE_BREAD.get())
+                .pattern("   ")
+                .pattern("BBB")
+                .pattern("   ")
+                .define('B', ModItems.RYE)
+                .unlockedBy("has_rye", has(ModItems.RYE))
+                .save(recipeOutput);
     }
 
     protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,

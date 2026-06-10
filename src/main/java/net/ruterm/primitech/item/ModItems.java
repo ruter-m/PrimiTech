@@ -22,6 +22,9 @@ public class ModItems {
     public static final DeferredItem<Item> RYE = ITEMS.register("rye",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> RYE_BREAD = ITEMS.registerItem("rye_bread",
+            (properties) -> new Item(properties.food(ModFoodProperties.RYE_BREAD)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
