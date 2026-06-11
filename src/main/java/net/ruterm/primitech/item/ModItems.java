@@ -9,6 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ruterm.primitech.PrimiTech;
 import net.ruterm.primitech.block.ModBlocks;
 import net.ruterm.primitech.item.custom.ClubItem;
+import net.ruterm.primitech.item.custom.KvassItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(PrimiTech.MODID);
@@ -24,6 +25,10 @@ public class ModItems {
 
     public static final DeferredItem<Item> RYE_BREAD = ITEMS.registerItem("rye_bread",
             (properties) -> new Item(properties.food(ModFoodProperties.RYE_BREAD)));
+
+    public static final DeferredItem<KvassItem> KVASS = ITEMS.registerItem("kvass",
+            (properties) -> new KvassItem(properties.food(ModFoodProperties.KVASS)));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

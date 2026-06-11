@@ -18,6 +18,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.RYE_SEEDS.get());
         basicItem(ModItems.RYE.get());
         basicItem(ModItems.RYE_BREAD.get());
+        basicItem(ModItems.KVASS.get());
 
     }
 }
