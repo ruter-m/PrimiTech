@@ -1,6 +1,7 @@
 package net.ruterm.primitech;
 
 import net.ruterm.primitech.block.ModBlocks;
+import net.ruterm.primitech.fluid.ModFluids;
 import net.ruterm.primitech.item.ModCreativeModeTabs;
 import net.ruterm.primitech.item.ModItems;
 import org.slf4j.Logger;
@@ -48,6 +49,8 @@ public class PrimiTech {
         modEventBus.addListener(this::commonSetup);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModFluids.register(modEventBus);
 
         ModCreativeModeTabs.register(modEventBus);
 

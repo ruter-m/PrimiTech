@@ -1,5 +1,6 @@
 package net.ruterm.primitech.item;
 
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.neoforged.bus.api.IEventBus;
@@ -8,6 +9,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.ruterm.primitech.PrimiTech;
 import net.ruterm.primitech.block.ModBlocks;
+import net.ruterm.primitech.fluid.ModFluids;
 import net.ruterm.primitech.item.custom.ClubItem;
 import net.ruterm.primitech.item.custom.KvassItem;
 
@@ -28,6 +30,12 @@ public class ModItems {
 
     public static final DeferredItem<KvassItem> KVASS = ITEMS.registerItem("kvass",
             (properties) -> new KvassItem(properties.food(ModFoodProperties.KVASS)));
+
+    public static final DeferredItem<BucketItem> FERMENTED_BREAD_BUCKET = ITEMS.registerItem("fermented_bread_bucket",
+            properties -> new BucketItem(ModFluids.FERMENTED_BREAD.get(), properties));
+
+    public static final DeferredItem<BucketItem> KVASS_BUCKET = ITEMS.registerItem("kvass_bucket",
+            properties -> new BucketItem(ModFluids.KVASS.get(), properties));
 
 
     public static void register(IEventBus eventBus) {
