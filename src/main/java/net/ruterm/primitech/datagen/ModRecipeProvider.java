@@ -1,8 +1,10 @@
 package net.ruterm.primitech.datagen;
 
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
@@ -32,6 +34,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("W  ")
                 .define('W', ItemTags.LOGS)
                 .unlockedBy("has_log", has(ItemTags.LOGS))
+                .group("club")
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CLUB.get())
@@ -40,6 +43,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("  W")
                 .define('W', ItemTags.LOGS)
                 .unlockedBy("has_log", has(ItemTags.LOGS))
+                .group("club")
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(PrimiTech.MODID, "club_flipped"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.RYE_BREAD.get())
@@ -49,6 +53,35 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('B', ModItems.RYE)
                 .unlockedBy("has_rye", has(ModItems.RYE))
                 .save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.FERMENTED_BREAD_BUCKET.get())
+                .requires(Items.SUGAR)
+                .requires(Items.SUGAR)
+                .requires(Items.SUGAR)
+                .requires(Items.WATER_BUCKET)
+                .requires(ModItems.RYE_BREAD)
+                .requires(ModItems.RYE_BREAD)
+                .requires(ModItems.RYE_BREAD)
+                .unlockedBy("has_rye", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.RYE.get()))
+                .save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.KVASS_BUCKET.get())
+                .requires(ModItems.KVASS)
+                .requires(ModItems.KVASS)
+                .requires(ModItems.KVASS)
+                .requires(ModItems.KVASS)
+                .requires(Items.BUCKET)
+                .unlockedBy("has_bucket", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BUCKET))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(PrimiTech.MODID, "kvass_bucket_from_bottles"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.KVASS.get(), 4)
+                .requires(Items.GLASS_BOTTLE)
+                .requires(Items.GLASS_BOTTLE)
+                .requires(Items.GLASS_BOTTLE)
+                .requires(Items.GLASS_BOTTLE)
+                .requires(ModItems.KVASS_BUCKET)
+                .unlockedBy("has_bucket", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BUCKET))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(PrimiTech.MODID, "kvass_from_bucket"));
     }
 
     protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
